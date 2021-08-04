@@ -29,7 +29,8 @@
       "size": "standard-1x"
     }
   },
- 
+ "image": "heroku/ruby",
+  "addons": [
     {
       "plan": "heroku-postgresql",
       "options": {
