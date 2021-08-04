@@ -29,13 +29,7 @@
       "size": "standard-1x"
     }
   },
-  "image": "heroku/ruby",
-  "addons": [
-    "openredis",
-    {
-      "plan": "mongolab:shared-single-small",
-      "as": "MONGO"
-    },
+ 
     {
       "plan": "heroku-postgresql",
       "options": {
