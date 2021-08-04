@@ -1,34 +1,58 @@
 {
-  "name": "Zee5 Downloader",
-  "description": "Zee5 Downloader By Asar",
+  "name": "MS zee5",
+  "description": "This app does one little thing, and does it well.",
   "keywords": [
-    "telegram",
-    "zee5",
-    "downloader"
+    "productivity",
+    "HTML5",
+    "scalpel"
   ],
-
+  "website": "https://msserials.net",
   "repository": "https://github.com/mabisanth/mszee5",
-  
+  "logo": "https://small-sharp-tool.com/logo.svg",
+  "success_url": "/welcome",
+  "scripts": {
+    "postdeploy": "bundle exec rake bootstrap"
+  },
   "env": {
-    "WEBHOOK": {
-      "description": "Setting this to ANYTHING will enable webhooks when in env mode",
-      "value": "ANYTHING"
-},
-   
-    
+    "SECRET_TOKEN": {
+      "description": "A secret key for verifying the integrity of signed cookies.",
+      "generator": "secret"
+    },
+    "WEB_CONCURRENCY": {
+      "description": "The number of processes to run.",
+      "value": "5"
+    }
+  },
+  "formation": {
+    "web": {
+      "quantity": 1,
+      "size": "standard-1x"
+    }
+  },
+  "image": "heroku/ruby",
   "addons": [
+    "openredis",
+    {
+      "plan": "mongolab:shared-single-small",
+      "as": "MONGO"
+    },
     {
       "plan": "heroku-postgresql",
-        "options": {
-          "version": "12"
-        }
+      "options": {
+        "version": "9.5"
       }
+    }
   ],
-  "stack": "container",
-  "formation": {
-    "worker": {
-      "quantity": 1,
-      "size": "free"
+  "buildpacks": [
+    {
+      "url": "https://github.com/stomita/heroku-buildpack-phantomjs"
+    }
+  ],
+  "environments": {
+    "test": {
+      "scripts": {
+        "test": "bundle exec rake test"
+      }
     }
   }
 }
