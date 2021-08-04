@@ -1,1 +1,1 @@
-worker: python3 widevine-dl.py
+web:paython widevine-dl.py
